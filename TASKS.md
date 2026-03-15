@@ -20,31 +20,37 @@ These are the items that require your input or action before the app is fully pr
 
 ---
 
-### 2. Add App Icon
+### 2. ~~Add App Icon~~ ✅ Done
 
-**What**: Provide a 1024×1024 PNG app icon.
+**Status**: All icon sizes have been auto-generated and are included in the repository at
+`FamilyPhotos/Assets.xcassets/AppIcon.appiconset/`. The `Contents.json` references every
+required size for both iPhone and iPad.
 
-**How**:
-1. Create or commission a 1024×1024 pixel PNG image for your app icon (no alpha/transparency, no rounded corners — Apple adds those).
-2. In Xcode, open `FamilyPhotos/Assets.xcassets`.
-3. Click on **AppIcon**.
-4. Drag your 1024×1024 PNG into the **1x** (iOS App Icon) slot.
-5. Xcode will generate all required sizes automatically.
+**Customizing the icon** (optional):
+If you want to replace the generated icon with your own design:
+1. Create a 1024×1024 PNG (no alpha, no rounded corners — Apple adds those).
+2. Replace `AppIcon-1024.png` in `FamilyPhotos/Assets.xcassets/AppIcon.appiconset/` with your file.
+3. Re-run the Python script `scripts/generate_icons.py` (provided in the repo) or resize manually and overwrite each `AppIcon-*.png` file, then re-build in Xcode.
 
-Alternatively, copy the file as `AppIcon.png` and add it to `FamilyPhotos/Assets.xcassets/AppIcon.appiconset/`, then update the `Contents.json` to reference it:
-```json
-{
-  "images": [
-    {
-      "filename": "AppIcon.png",
-      "idiom": "universal",
-      "platform": "ios",
-      "size": "1024x1024"
-    }
-  ],
-  "info": { "author": "xcode", "version": 1 }
-}
-```
+Generated sizes included:
+
+| File | Pixels | Usage |
+|------|--------|-------|
+| `AppIcon-20@1x.png` | 20×20 | Notification (iPhone/iPad 1x) |
+| `AppIcon-20@2x.png` | 40×40 | Notification (iPhone/iPad 2x) |
+| `AppIcon-20@3x.png` | 60×60 | Notification (iPhone 3x) |
+| `AppIcon-29@1x.png` | 29×29 | Settings (iPhone/iPad 1x) |
+| `AppIcon-29@2x.png` | 58×58 | Settings (iPhone/iPad 2x) |
+| `AppIcon-29@3x.png` | 87×87 | Settings (iPhone 3x) |
+| `AppIcon-40@1x.png` | 40×40 | Spotlight (iPad 1x) |
+| `AppIcon-40@2x.png` | 80×80 | Spotlight (iPhone 2x / iPad 2x) |
+| `AppIcon-40@3x.png` | 120×120 | Spotlight (iPhone 3x) |
+| `AppIcon-60@2x.png` | 120×120 | Home screen (iPhone 2x) |
+| `AppIcon-60@3x.png` | 180×180 | Home screen (iPhone 3x) |
+| `AppIcon-76@1x.png` | 76×76 | Home screen (iPad 1x) |
+| `AppIcon-76@2x.png` | 152×152 | Home screen (iPad 2x) |
+| `AppIcon-83.5@2x.png` | 167×167 | Home screen (iPad Pro 2x) |
+| `AppIcon-1024.png` | 1024×1024 | App Store marketing image |
 
 ---
 
