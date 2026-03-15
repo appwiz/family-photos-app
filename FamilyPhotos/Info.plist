@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDisplayName</key>
+	<string>Family Photos</string>
+	<key>CFBundleName</key>
+	<string>FamilyPhotos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Family Photos needs access to your photo library to display photos from your iCloud shared albums.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Family Photos needs access to save photos.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

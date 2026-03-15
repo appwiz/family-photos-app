@@ -1,9 +1,9 @@
 import SwiftUI
 import Photos
+import UIKit
 
 struct ContentView: View {
     @StateObject private var photoManager = PhotoLibraryManager()
-    @State private var showAlbumPicker = false
     @AppStorage("selectedAlbumIdentifier") private var selectedAlbumIdentifier: String = ""
     
     var body: some View {
@@ -13,14 +13,6 @@ struct ContentView: View {
                     AlbumPickerView(photoManager: photoManager, selectedAlbumIdentifier: $selectedAlbumIdentifier)
                 } else {
                     SlideshowView(photoManager: photoManager, albumIdentifier: selectedAlbumIdentifier)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button("Change Album") {
-                                    selectedAlbumIdentifier = ""
-                                }
-                            }
-                        }
-                        .navigationBarHidden(true)
                 }
             } else if photoManager.authorizationStatus == .notDetermined {
                 PermissionRequestView(photoManager: photoManager)

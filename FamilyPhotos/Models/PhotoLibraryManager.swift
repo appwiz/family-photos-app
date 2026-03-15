@@ -10,6 +10,9 @@ class PhotoLibraryManager: NSObject, ObservableObject {
     
     override init() {
         super.init()
+        // .readWrite is the correct access level for reading photos from the library.
+        // PHAccessLevel has only .addOnly (write-only) and .readWrite (read+write);
+        // there is no read-only level in PhotoKit.
         authorizationStatus = PHPhotoLibrary.authorizationStatus(for: .readWrite)
         PHPhotoLibrary.shared().register(self)
     }

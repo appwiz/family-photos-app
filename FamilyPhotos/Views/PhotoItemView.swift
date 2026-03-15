@@ -37,20 +37,28 @@ struct PhotoItemView: View {
             options.deliveryMode = .highQualityFormat
             options.isNetworkAccessAllowed = true
             options.resizeMode = .exact
-            
+
             let targetSize = CGSize(
                 width: UIScreen.main.bounds.width * UIScreen.main.scale,
                 height: UIScreen.main.bounds.height * UIScreen.main.scale
             )
-            
+
+            var hasResumed = false
             PHImageManager.default().requestImage(
                 for: asset,
                 targetSize: targetSize,
                 contentMode: .aspectFit,
                 options: options
             ) { image, info in
+                guard !hasResumed else { return }
                 let isDegraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
-                if !isDegraded {
+                let isCancelled = (info?[PHImageCancelledKey] as? Bool) ?? false
+                let hasError = info?[PHImageErrorKey] != nil
+
+                // Resume on the final result: a non-degraded image, a cancellation,
+                // an error, or a degraded image when nothing better is coming.
+                if !isDegraded || isCancelled || hasError {
+                    hasResumed = true
                     continuation.resume(returning: image)
                 }
             }

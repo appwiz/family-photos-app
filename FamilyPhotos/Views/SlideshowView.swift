@@ -5,7 +5,7 @@ struct SlideshowView: View {
     @ObservedObject var photoManager: PhotoLibraryManager
     let albumIdentifier: String
     
-    @StateObject private var settings = SettingsManager.shared
+    @ObservedObject private var settings = SettingsManager.shared
     @State private var assets: [PHAsset] = []
     @State private var currentIndex: Int = 0
     @State private var timer: Timer?
